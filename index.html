@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cipher Tool - Login</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+</head>
+<body>
+  <div class="theme-toggle" id="fixedThemeToggle">
+    <button id="themeToggle" aria-label="Toggle Dark Mode">
+      <span class="light-icon">☀️</span>
+      <span class="dark-icon">🌙</span>
+    </button>
+  </div>
+
+  <div class="login-container">
+    <div class="engine-background">
+      <div class="gear gear-1"></div>
+      <div class="gear gear-2"></div>
+      <div class="gear gear-3"></div>
+      <div class="gear gear-4"></div>
+      <div class="piston piston-1"></div>
+      <div class="piston piston-2"></div>
+      <div class="piston piston-3"></div>
+      <div class="pipe pipe-1"></div>
+      <div class="pipe pipe-2"></div>
+      <div class="pipe pipe-3"></div>
+      <div class="gauge gauge-1"></div>
+      <div class="gauge gauge-2"></div>
+      <div class="circuit circuit-1"></div>
+      <div class="circuit circuit-2"></div>
+      <div class="security-symbol symbol-1">🔒</div>
+      <div class="security-symbol symbol-2">🔐</div>
+      <div class="binary binary-1">10010110</div>
+      <div class="binary binary-2">01101001</div>
+      <div class="hacking-effect"></div>
+    </div>
+    
+    <div class="login-card">
+      <div class="login-header">
+        <h1>🔐 Cipher Tool</h1>
+        <p id="form-title">Sign in to access the encryption dashboard</p>
+      </div>
+      
+      <!-- Login Form -->
+      <form id="loginForm" class="active-form">
+        <div class="form-group">
+          <label for="username">👤 Username</label>
+          <input type="text" id="username" class="form-control" placeholder="Enter username" autocomplete="username">
+          <div id="usernameError" class="error-message">Please enter a username</div>
+        </div>
+        <div class="form-group">
+          <label for="password">🔑 Password</label>
+                    <input type="password" id="password" class="form-control" placeholder="Enter password" autocomplete="current-password">
+           <span class="password-toggle" onclick="togglePasswordVisibility('password')">👁️</span>
+            
+   
+          <div id="passwordError" class="error-message">Please enter a password</div>
+        </div>
+        <div id="loginError" class="error-message">Invalid username or password</div>
+        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+        
+        <div class="form-links">
+          <div class="forgot-password-container">
+            <a href="#" id="forgotPassword">Forgot password?</a>
+          </div>
+          <div class="form-switcher">
+            <p>Don't have an account? <a href="#" id="showRegister">Register now</a></p>
+          </div>
+        </div>
+      </form>
+      
+      <!-- Register Form -->
+      <form id="registerForm" class="hidden-form">
+        <div class="form-group">
+          <label for="newUsername">👤 Choose Username</label>
+          <input type="text" id="newUsername" class="form-control" placeholder="Create username" autocomplete="username">
+          <div id="newUsernameError" class="error-message">Please enter a username</div>
+        </div>
+        <div class="form-group">
+          <label for="email">📧 Email Address</label>
+          <input type="email" id="email" class="form-control" placeholder="Enter email" autocomplete="email">
+          <div id="emailError" class="error-message">Please enter a valid email</div>
+        </div>
+        <div class="form-group">
+          <label for="phone">📱 Phone Number</label>
+          <input type="tel" id="phone" class="form-control" placeholder="Enter phone number" autocomplete="tel">
+          <div id="phoneError" class="error-message">Please enter a valid phone number</div>
+        </div>
+        <div class="form-group">
+          <label for="dob">🗓️ Date of Birth</label>
+          <input type="date" id="dob" class="form-control" autocomplete="bday">
+          <div id="dobError" class="error-message">Please enter your date of birth</div>
+        </div>
+        <div class="form-group">
+          <label for="newPassword">🔑 Create Password</label>
+          <input type="password" id="newPassword" class="form-control" placeholder="Create password" autocomplete="new-password">
+          <div id="newPasswordError" class="error-message">Password must be at least 4 characters</div>
+          <div id="passwordStrength" class="password-strength hidden">
+            <div class="strength-bar">
+              <div class="strength-meter" id="strengthMeter"></div>
+            </div>
+            <p id="strengthText">Weak</p>
+            <ul id="strengthFeedback" class="strength-feedback"></ul>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">🔐 Confirm Password</label>
+          <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm password" autocomplete="new-password">
+          <div id="confirmPasswordError" class="error-message">Passwords do not match</div>
+        </div>
+        <div id="registerError" class="error-message">Registration failed. Please try again.</div>
+        <div class="form-group checkbox-group">
+          <input type="checkbox" id="termsAgree" class="custom-checkbox">
+          <label for="termsAgree">I agree to the Terms and Conditions</label>
+          <div id="termsError" class="error-message">You must agree to the terms</div>
+        </div>
+        <button type="submit" class="btn btn-secondary btn-block">Create Account</button>
+        
+        <div class="form-switcher">
+          <p>Already have an account? <a href="#" id="showLogin">Sign In</a></p>
+        </div>
+      </form>
+      
+      <!-- Forgot Password Form -->
+      <form id="forgotPasswordForm" class="hidden-form">
+        <div class="form-group">
+          <label for="forgotUsername">👤 Username</label>
+          <input type="text" id="forgotUsername" class="form-control" placeholder="Enter username" autocomplete="username">
+          <div id="forgotUsernameError" class="error-message">Please enter your username</div>
+        </div>
+        <div class="form-group">
+          <label for="forgotEmail">📧 Email Address</label>
+          <input type="email" id="forgotEmail" class="form-control" placeholder="Enter registered email" autocomplete="email">
+          <div id="forgotEmailError" class="error-message">Please enter your registered email</div>
+        </div>
+        <div class="form-group">
+          <label for="forgotPhone">📱 Phone Number</label>
+          <input type="tel" id="forgotPhone" class="form-control" placeholder="Enter registered phone number" autocomplete="tel">
+          <div id="forgotPhoneError" class="error-message">Please enter your registered phone number</div>
+        </div>
+        <div class="form-group">
+          <label for="forgotDob">🗓️ Date of Birth</label>
+          <input type="date" id="forgotDob" class="form-control" autocomplete="bday">
+          <div id="forgotDobError" class="error-message">Please enter your date of birth</div>
+        </div>
+        <div id="forgotError" class="error-message">User information doesn't match our records.</div>
+        <button type="submit" class="btn btn-secondary btn-block">Verify Identity</button>
+        
+        <div class="form-switcher">
+          <p><a href="#" id="backToLogin">Back to login</a></p>
+        </div>
+      </form>
+      
+      <!-- Reset Password Form -->
+      <form id="resetPasswordForm" class="hidden-form">
+        <div class="form-group">
+          <label for="resetPassword">🔑 New Password</label>
+          <input type="password" id="resetPassword" class="form-control" placeholder="Enter new password" autocomplete="new-password">
+          <div id="resetPasswordError" class="error-message">Password must be at least 4 characters</div>
+        </div>
+        <div class="form-group">
+          <label for="resetConfirmPassword">🔐 Confirm New Password</label>
+          <input type="password" id="resetConfirmPassword" class="form-control" placeholder="Confirm new password" autocomplete="new-password">
+          <div id="resetConfirmError" class="error-message">Passwords do not match</div>
+        </div>
+        <div id="resetError" class="error-message">Failed to reset password.</div>
+        <button type="submit" class="btn btn-primary btn-block">Reset Password</button>
+      </form>
+      
+      <div class="login-footer">
+        <p>Created by Abdul Wasay Tariq Siddiqui & Daniyal Ahmed Team</p>
+      </div>
+    </div>
+  </div>
+  <script src="author.js"></script>
+  <script src="passwordStrength.js"></script>
+  <script src="theme.js"></script>
+</body>
+</html>
